@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 
-const lexend = Lexend({ weight: ["400"], subsets: ["latin"] });
+import { ClerkProvider } from "@clerk/nextjs";
+
+const lexend = Lexend({ weight: ["400", "300"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={lexend.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={lexend.className}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
