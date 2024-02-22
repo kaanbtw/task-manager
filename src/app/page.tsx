@@ -10,6 +10,9 @@ import { Icons } from "@/components/Icons";
 
 import Sidebar from "@/components/Sidebar";
 
+import { useClerk } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+
 export default function Home() {
   return (
     <main className="dark bg-background overflow-hidden flex w-full">
@@ -20,7 +23,7 @@ export default function Home() {
             <h1 className="text-3xl">All Tasks</h1>
 
             <Button
-              className="hidden md:flex border-muted-foreground bg-muted text-foreground"
+              className="hidden md:flex bg-foreground font-normal"
               color="primary"
               variant="solid"
               startContent={<Icons.Plus />}
