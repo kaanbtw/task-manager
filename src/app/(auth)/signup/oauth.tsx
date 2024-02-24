@@ -22,7 +22,7 @@ export default function Oauth() {
       <Button
         onClick={() => OauthSignupHandler("oauth_github")}
         variant="bordered"
-        className="w-full gap-2 rounded-[8px] border border-border"
+        className="w-full gap-2 rounded-[8px] border border-border text-nav-primary"
       >
         <Icons.Github className="h-4 w-4" />
         Sign up with GitHub
@@ -30,7 +30,7 @@ export default function Oauth() {
       <Button
         onClick={() => OauthSignupHandler("oauth_google")}
         variant="bordered"
-        className="w-full gap-2 rounded-[8px] border border-border"
+        className="w-full gap-2 rounded-[8px] border border-border text-nav-primary"
       >
         <Icons.Google className="h-4 w-4" />
         Sign up with Google

@@ -69,7 +69,10 @@ export default function SignUpForm({ setUserEmail }: Props) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 w-full text-nav-primary"
+      >
         <div className="space-y-3">
           <FormField
             control={form.control}
@@ -81,7 +84,7 @@ export default function SignUpForm({ setUserEmail }: Props) {
                   <Input
                     disabled={isPending}
                     placeholder="example@mail.com"
-                    className="rounded-lg h-10"
+                    className="rounded-lg h-10 border-border"
                     type="email"
                     {...field}
                   />
@@ -99,7 +102,7 @@ export default function SignUpForm({ setUserEmail }: Props) {
                   <Input
                     disabled={isPending}
                     placeholder="username"
-                    className="rounded-lg h-10"
+                    className="rounded-lg h-10 border-border"
                     type="text"
                     {...field}
                   />
@@ -113,7 +116,7 @@ export default function SignUpForm({ setUserEmail }: Props) {
           type="submit"
           variant="solid"
           disabled={isPending}
-          className="w-full rounded-lg h-10 bg-foreground font-normal"
+          className="w-full rounded-lg h-10 bg-secondary text-nav-primary border font-normal"
         >
           {isPending ? (
             <Icons.Spinner className="h-5 w-5 animate-spin" />

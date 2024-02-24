@@ -18,7 +18,7 @@ export default function SignInPage() {
         <FadeIn y={24} className="w-full">
           <div className="flex flex-col gap-8 w-full items-center">
             <div className="flex flex-col items-center">
-              <h2 className="font-bold text-3xl text-primary">
+              <h2 className="font-bold text-3xl text-nav-primary">
                 Create an Account
               </h2>
               <p className="font-normal text-muted-foreground">
@@ -37,7 +37,7 @@ export default function SignInPage() {
             <SignUpForm setUserEmail={setUserEmail} />
             <div className="flex gap-2 font-light text-sm">
               <p className="text-muted-foreground">Already have an account?</p>
-              <Link href="/signin" className="text-foreground">
+              <Link href="/signin" className="text-nav-primary">
                 Sign In
               </Link>
             </div>
