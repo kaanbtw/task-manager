@@ -4,19 +4,19 @@ import { BiTask, BiTaskX } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { TbEdit } from "react-icons/tb";
 import { HiTrash } from "react-icons/hi2";
-import { LuLoader2 } from "react-icons/lu";
-import { LuMail } from "react-icons/lu";
+import { LuLoader2, LuMail } from "react-icons/lu";
+import { FaUserLarge } from "react-icons/fa6";
+import { BiLogOutCircle } from "react-icons/bi";
 
 export const Icons = {
   Plus: FaPlus,
-  Task: GoTasklist,
-  TaskX: BiTask,
-  Tasks: BiTaskX,
   Check: BsCheck,
   Edit: TbEdit,
   Trash: HiTrash,
   Spinner: LuLoader2,
   Mail: LuMail,
+  User: FaUserLarge,
+  Logout: BiLogOutCircle,
   Google: ({ ...props }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512" {...props}>
       <path
@@ -33,4 +33,7 @@ export const Icons = {
       />
     </svg>
   ),
+  Task: () => <BiTask className="text-base" />,
+  TaskX: () => <BiTaskX className="text-base" />,
+  Tasks: () => <GoTasklist className="text-base" />,
 };

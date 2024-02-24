@@ -4,7 +4,7 @@ import "./globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
-const lexend = Lexend({ weight: ["400", "300"], subsets: ["latin"] });
+const lexend = Lexend({ weight: ["400", "300", "500"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
