@@ -1,3 +1,5 @@
+"use client";
+
 import { Checkbox } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import {
@@ -23,7 +25,7 @@ const TaskItem = ({ title, description, date }: Props) => {
   const [isLoaded, setIsLoaded] = useState(true);
 
   return (
-    <div className="flex flex-col relative w-[360px] max-[360px]:w-fit h-48 max-h-48 bg-secondary rounded-xl outline outline-1 outline-border gap-4 py-4 justify-between cursor-pointer hover:outline-foreground/50 duration-300 ease-in">
+    <div className="flex flex-col relative w-[360px] max-[360px]:w-fit h-48 max-h-48 bg-secondary rounded-xl outline outline-1 outline-border gap-4 py-4 justify-between cursor-pointer hover:outline-foreground/15 duration-300 ease-in z-20 overflow-hidden">
       <div className="flex flex-col relative h-fit px-4">
         <div className="flex justify-between h-fit items-start">
           {isLoaded ? (
@@ -38,7 +40,7 @@ const TaskItem = ({ title, description, date }: Props) => {
             <Dropdown
               placement="bottom-end"
               classNames={{
-                content: "bg-muted",
+                content: "bg-secondary border border-2",
               }}
             >
               <DropdownTrigger>
@@ -58,7 +60,9 @@ const TaskItem = ({ title, description, date }: Props) => {
                 variant="bordered"
                 aria-label="Static Actions"
                 classNames={{
-                  list: "bg-muted",
+                  list: "bg-secondary",
+                  base: "bg-secondary",
+                  emptyContent: "bg-secondary",
                 }}
               >
                 <DropdownItem
@@ -112,7 +116,7 @@ const TaskItem = ({ title, description, date }: Props) => {
 
         {isLoaded ? (
           <div className="flex items-center gap-3 h-7">
-            <div className="flex items-center justify-center w-fit h-full py-3 px-3 bg-muted rounded-[8px] gap-[6px] cursor-default border border-dashed">
+            <div className="flex items-center justify-center w-fit h-full py-3 px-3 bg-muted rounded-[8px] gap-[6px] cursor-default ">
               <p className="text-sm text-muted-foreground font-normal">
                 {isSelected ? "Complete" : "Incomplete"}
               </p>
