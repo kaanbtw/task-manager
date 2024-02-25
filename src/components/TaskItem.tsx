@@ -21,7 +21,7 @@ interface Props {
 }
 
 const TaskItem = ({ title, description, date }: Props) => {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState<boolean>(false);
   const [isLoaded, setIsLoaded] = useState(true);
 
   return (
@@ -83,12 +83,6 @@ const TaskItem = ({ title, description, date }: Props) => {
               </DropdownMenu>
             </Dropdown>
           )}
-
-          {/* <div className="flex items-center justify-center gap-[2px] w-7 h-7 hover:bg-muted rounded-[8px] cursor-pointer z-50">
-            <span className="h-[3px] w-[3px] bg-muted-foreground rounded-full"></span>
-            <span className="h-[3px] w-[3px] bg-muted-foreground rounded-full"></span>
-            <span className="h-[3px] w-[3px] bg-muted-foreground rounded-full"></span>
-          </div> */}
         </div>
         {isLoaded ? (
           <p className="relative text-sm text-muted-foreground line-clamp-3">
@@ -122,26 +116,15 @@ const TaskItem = ({ title, description, date }: Props) => {
               </p>
             </div>
 
-            {/* <span className="flex items-center justify-center w-7 h-full bg-green-500 rounded-[8px]">
-            <BsCheck size="24" className="text-background" />
-          </span> */}
             <Checkbox
               color="success"
               radius="sm"
-              icon={
-                <Icons.Check
-                  size={42}
-                  height={42}
-                  width={42}
-                  className="text-background w-7 h-7"
-                />
-              }
               isSelected={isSelected}
               onValueChange={setIsSelected}
               classNames={{
                 wrapper:
                   "relative h-7 w-7 border-green-500 before:border-muted hover:before:bg-muted ring-green-500 group-data-[hover=true]:before:bg-muted",
-                icon: "w-5 h-5 hover:bg-none",
+                icon: "w-3 h-3 hover:bg-none",
                 base: "border-none bg-none hover:bg-none border-green-500 p-0",
               }}
             ></Checkbox>

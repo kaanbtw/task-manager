@@ -42,10 +42,7 @@ export default function VerifyEmail({ userEmail }: Props) {
         const completeSignUp = await signUp.attemptEmailAddressVerification({
           code: values.code,
         });
-        console.log("test1");
-        console.log("status > ", completeSignUp);
         if (completeSignUp.status === "complete") {
-          console.log("test2");
           await setActive({ session: completeSignUp.createdSessionId }).then(
             () => {
               router.push("/");
@@ -100,7 +97,7 @@ export default function VerifyEmail({ userEmail }: Props) {
           onClick={() => verifyCode({ code: code })}
           disabled={isPending}
           variant="default"
-          className="w-full h-11 rounded-[8px]"
+          className="w-full h-11 rounded-[8px] bg-secondary"
         >
           {isPending ? (
             <Icons.Spinner className="h-5 w-5 animate-spin" />
