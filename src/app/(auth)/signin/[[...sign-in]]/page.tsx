@@ -34,7 +34,9 @@ export default function SignInPage() {
 
             <SignInForm setVerifying={setVerifying} />
             <div className="flex gap-2 font-light text-sm">
-              <p className="text-muted-foreground">Don't have an account?</p>
+              <p className="text-muted-foreground">
+                {"Don't have an account?"}
+              </p>
               <Link href="/signup" className="text-nav-primary">
                 Sign Up
               </Link>

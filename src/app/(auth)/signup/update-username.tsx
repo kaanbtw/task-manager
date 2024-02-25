@@ -1,12 +1,9 @@
-import AuthCode from "react-auth-code-input";
-import { motion } from "framer-motion";
 import { useSignUp, isClerkAPIResponseError } from "@clerk/nextjs";
-import { useTransition, useState } from "react";
+import { useTransition } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 // Validations
-// Validation
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -73,7 +70,7 @@ export default function UpdateUsername() {
         <div className="flex flex-col items-center space-y-2 z-10">
           <h2 className="font-bold text-3xl text-foreground">Welcome!</h2>
           <p className="font-normal text-foreground/90">
-            Let's set up your username to get started.
+            Set up your username to get started.
           </p>
         </div>
       </div>
