@@ -2,19 +2,36 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import SignUpForm from "../signup-form";
 import Oauth from "../oauth";
 import VerifyEmail from "../verify-email";
+import SetUsername from "../update-username";
 
 import FadeIn from "@/components/Fade-in";
 
 export default function SignInPage() {
   const [userEmail, setUserEmail] = useState("");
+  const searchParams = useSearchParams();
+
+  const setUsername = searchParams.get("activated");
 
   return (
     <div className="flex flex-col items-center space-y-4 w-[28rem]">
-      {!userEmail ? (
+      {userEmail && (
+        <FadeIn transition={0.2} className="w-full h-full">
+          <VerifyEmail userEmail={userEmail} />
+        </FadeIn>
+      )}
+
+      {setUsername && setUsername === "false" && (
+        <FadeIn transition={0.2} className="w-full h-full">
+          <SetUsername />
+        </FadeIn>
+      )}
+
+      {!userEmail && !(setUsername && setUsername === "false") && (
         <FadeIn y={24} className="w-full">
           <div className="flex flex-col gap-8 w-full items-center">
             <div className="flex flex-col items-center">
@@ -42,10 +59,6 @@ export default function SignInPage() {
               </Link>
             </div>
           </div>
-        </FadeIn>
-      ) : (
-        <FadeIn transition={0.2} className="w-full h-full">
-          <VerifyEmail userEmail={userEmail} />
         </FadeIn>
       )}
     </div>
