@@ -18,20 +18,9 @@ export const signUpSchema = z.object({
 });
 
 export const signInSchema = z.object({
-  identifier: z.union([
-    z
-      .string()
-      .min(4, { message: "Username must be at least 4 characters long" }),
-    z.string().email(),
-  ]),
-  password: z
-    .string()
-    .min(6, {
-      message: "Password must be at least 6 characters long",
-    })
-    .max(64, {
-      message: "Password must be a maximum of 64 characters long",
-    }),
+  email: z.string().email({
+    message: "Please enter a valid email address",
+  }),
 });
 
 export const usernameSchema = z.object({
