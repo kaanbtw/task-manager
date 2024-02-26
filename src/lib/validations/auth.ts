@@ -35,3 +35,16 @@ export const verifyEmailSchema = z.object({
     })
     .max(6),
 });
+
+export const taskSchema = z.object({
+  title: z
+    .string()
+    .min(1, { message: "Please enter a title" })
+    .max(64, { message: "Title must be a maximum of 64 characters long" }),
+  description: z
+    .string()
+    .max(255, {
+      message: "Description must be a maximum of 255 characters long",
+    })
+    .optional(),
+});

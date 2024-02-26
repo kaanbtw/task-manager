@@ -1,8 +1,6 @@
 import Image from "next/image";
 import TaskItem from "@/components/TaskItem";
-import NewTaskItem from "@/components/NewTaskItem";
-
-import { Button, ButtonGroup } from "@nextui-org/react";
+import NewTaskModal from "@/components/NewTaskModal";
 
 import { Icons } from "@/components/Icons";
 import Navbar from "@/components/Navbar";
@@ -17,52 +15,12 @@ export default async function Home() {
   if (!user) return redirect("/");
 
   return (
-    <main className="flex flex-col dark relative bg-background h-full w-full items-center justify-center overflow-hidden">
+    <main className="dark flex flex-col relative bg-background h-full w-full items-center justify-center overflow-hidden">
       {/* <Sidebar /> */}
-      <div className="relative flex items-center min-[800px]:w-[746px] min-[1400px]:w-[1130px] min-[1800px]:w-[1514px] h-[11%] justify-between">
+      <div className="relative flex justify-between items-center min-[800px]:w-[746px] min-[1400px]:w-[1130px] min-[1800px]:w-[1514px] h-[11%]">
         <h1 className="text-3xl">All Tasks</h1>
 
-        <div className="hidden min-[800px]:flex gap-2">
-          <Button
-            className="bg-secondary text-nav-primary font-normal z-20"
-            color="primary"
-            variant="solid"
-            startContent={<Icons.Plus />}
-          >
-            Create New Task
-          </Button>
-
-          <Button
-            className="flex min-[1400px]:hidden bg-secondary font-normal z-20"
-            color="primary"
-            isIconOnly
-          >
-            <div className="flex items-center justify-center gap-[4px]">
-              <span className="h-[4px] w-[4px] bg-nav-primary rounded-full"></span>
-              <span className="h-[4px] w-[4px] bg-nav-primary rounded-full"></span>
-              <span className="h-[4px] w-[4px] bg-nav-primary rounded-full"></span>
-            </div>
-          </Button>
-        </div>
-
-        <ButtonGroup className="flex min-[800px]:hidden z-20">
-          <Button
-            isIconOnly
-            className="min-w-unit-12 w-12 h-10 hover:bg-muted cursor-pointer z-50 bg-muted data-[hover=true]:bg-muted text-nav-primary"
-          >
-            <Icons.Plus />
-          </Button>
-          <Button
-            isIconOnly
-            className="min-w-unit-12 w-12 h-10 hover:bg-muted cursor-pointer z-50 bg-muted data-[hover=true]:bg-muted"
-          >
-            <div className="flex items-center justify-center gap-[4px]">
-              <span className="h-[4px] w-[4px] bg-nav-primary rounded-full"></span>
-              <span className="h-[4px] w-[4px] bg-nav-primary rounded-full"></span>
-              <span className="h-[4px] w-[4px] bg-nav-primary rounded-full"></span>
-            </div>
-          </Button>
-        </ButtonGroup>
+        <NewTaskModal buttonType="small" />
       </div>
       <section className="flex justify-center relative w-full h-full min-[800px]:h-[78%] overflow-x-hidden">
         <div className="flex w-fit overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border justify-center items-center">
@@ -119,7 +77,7 @@ export default async function Home() {
               description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, doloremque."
               date="13/07/2024"
             />
-            <NewTaskItem />
+            <NewTaskModal buttonType="big" />
           </div>
         </div>
       </section>
