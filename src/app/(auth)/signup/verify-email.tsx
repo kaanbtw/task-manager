@@ -12,7 +12,7 @@ import { z } from "zod";
 import { verifyEmailSchema } from "@/lib/validations/auth";
 
 // UI Components
-import { Button } from "@/components/ui/button";
+import { Button } from "@nextui-org/react";
 import { Icons } from "@/components/Icons";
 
 interface Props {
@@ -96,8 +96,8 @@ export default function VerifyEmail({ userEmail }: Props) {
         <Button
           onClick={() => verifyCode({ code: code })}
           disabled={isPending}
-          variant="default"
-          className="w-full h-11 rounded-[8px] bg-secondary"
+          variant="solid"
+          className="w-full h-11 rounded-[8px] bg-secondary text-foreground"
         >
           {isPending ? (
             <Icons.Spinner className="h-5 w-5 animate-spin" />

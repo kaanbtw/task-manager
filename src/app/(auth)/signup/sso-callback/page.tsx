@@ -2,7 +2,10 @@ import { AuthenticateWithRedirectCallback } from "@clerk/nextjs";
 
 const SSOCallback = () => {
   return (
-    <AuthenticateWithRedirectCallback continueSignUpUrl="/signup?activated=false" />
+    <AuthenticateWithRedirectCallback
+      redirectUrl="/"
+      continueSignUpUrl="/signup?activated=false"
+    />
   );
 };
 
