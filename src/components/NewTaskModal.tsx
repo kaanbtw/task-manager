@@ -1,5 +1,7 @@
 "use client";
 
+import { createTask } from "@/app/actions";
+
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -38,7 +40,7 @@ const NewTaskModal = ({ buttonType }: { buttonType: string }) => {
   });
 
   function onSubmit(values: z.infer<typeof taskSchema>) {
-    // TODO
+    createTask({ title: values.title, description: values.description });
   }
 
   return (
