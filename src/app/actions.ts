@@ -5,6 +5,7 @@ import { taskSchema } from "@/lib/validations/auth";
 import { db } from "@/lib/db";
 import { tasks } from "@/lib/db/schema";
 import { currentUser } from "@clerk/nextjs";
+import { eq } from "drizzle-orm";
 
 export async function createTask(values: z.infer<typeof taskSchema>) {
   const user = await currentUser();
@@ -16,4 +17,12 @@ export async function createTask(values: z.infer<typeof taskSchema>) {
     title: values.title,
     description: values.description,
   });
+}
+
+export async function getAllTasks(username: string) {
+  return await db
+    .select()
+    .from(tasks)
+    .where(eq(tasks.user, username))
+    .orderBy(tasks.date);
 }
