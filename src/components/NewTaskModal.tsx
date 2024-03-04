@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import { createTask } from "@/app/actions";
 
 import { z } from "zod";
@@ -40,7 +41,13 @@ const NewTaskModal = ({ buttonType }: { buttonType: string }) => {
   });
 
   function onSubmit(values: z.infer<typeof taskSchema>) {
-    createTask({ title: values.title, description: values.description });
+    createTask({ title: values.title, description: values.description })
+      .then(() => {
+        toast.message("Toast created.");
+      })
+      .catch(() => {
+        toast.error("Something went wrong, please try again later.");
+      });
   }
 
   return (
@@ -168,6 +175,7 @@ const NewTaskModal = ({ buttonType }: { buttonType: string }) => {
                           Close
                         </Button>
                         <Button
+                          onPress={onClose}
                           type="submit"
                           color="primary"
                           className="text-nav-primary bg-nav-background rounded-[10px] hover:ring-2 hover:ring-border"

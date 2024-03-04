@@ -12,11 +12,13 @@ export async function createTask(values: z.infer<typeof taskSchema>) {
 
   if (!user?.username) return;
 
-  await db.insert(tasks).values({
+  let result = await db.insert(tasks).values({
     user: user.username,
     title: values.title,
     description: values.description,
   });
+
+  return result;
 }
 
 export async function getAllTasks(username: string) {
