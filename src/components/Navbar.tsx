@@ -10,8 +10,8 @@ import { Button } from "@nextui-org/react";
 
 let tabs = [
   { id: "all", label: "All Tasks" },
-  { id: "incomplete", label: "Incomplete Tasks" },
-  { id: "complete", label: "Complete Tasks" },
+  { id: "active", label: "Active Tasks" },
+  { id: "completed", label: "Completed Tasks" },
 ];
 
 const Navbar = ({ username }: { username: string }) => {
@@ -42,8 +42,8 @@ const Navbar = ({ username }: { username: string }) => {
                 )}
               >
                 {tab.id === "all" && <Icons.Tasks />}
-                {tab.id === "incomplete" && <Icons.TaskX />}
-                {tab.id === "complete" && <Icons.Task />}
+                {tab.id === "active" && <Icons.TaskX />}
+                {tab.id === "completed" && <Icons.Task />}
 
                 <p className="text-sm font-normal">{tab.label}</p>
 

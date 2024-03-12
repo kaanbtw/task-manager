@@ -112,7 +112,7 @@ const TaskItem = ({ title, description, date }: Props) => {
           <div className="flex items-center gap-3 h-7">
             <div className="flex items-center justify-center w-fit h-full py-3 px-3 bg-muted rounded-[8px] gap-[6px] cursor-default ">
               <p className="text-sm text-muted-foreground font-normal">
-                {isSelected ? "Complete" : "Incomplete"}
+                {isSelected ? "Completed" : "Active"}
               </p>
             </div>
 
