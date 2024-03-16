@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import NewTaskModal from "@/components/task/NewTaskModal";
+import NewTaskModal from "./new-task-modal";
 import TasksList from "./tasks-list";
 
 import { Toaster } from "@/components/ui/sonner";

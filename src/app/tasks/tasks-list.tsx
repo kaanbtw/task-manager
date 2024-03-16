@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
 import TaskItem from "./task-item";
-import NewTaskModal from "@/components/task/NewTaskModal";
+import NewTaskModal from "./new-task-modal";
 import Navbar from "./navbar";
 
 import { MdTask } from "react-icons/md";
