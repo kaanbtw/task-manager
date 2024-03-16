@@ -26,7 +26,7 @@ import {
   ButtonGroup,
   useDisclosure,
 } from "@nextui-org/react";
-import { Icons } from "./Icons";
+import { Icons } from "@/components/Icons";
 
 const NewTaskModal = ({ buttonType }: { buttonType: string }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +43,7 @@ const NewTaskModal = ({ buttonType }: { buttonType: string }) => {
   function onSubmit(values: z.infer<typeof taskSchema>) {
     createTask({ title: values.title, description: values.description })
       .then(() => {
-        toast.message("Toast created.");
+        toast.message("Task created.");
       })
       .catch(() => {
         toast.error("Something went wrong, please try again later.");

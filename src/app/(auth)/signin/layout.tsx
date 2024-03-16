@@ -10,7 +10,7 @@ export default async function RootLayout({
   const { userId } = auth();
 
   if (userId) {
-    return redirect("/");
+    return redirect("/tasks");
   }
 
   return (

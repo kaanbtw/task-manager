@@ -3,10 +3,9 @@
 import { Icons } from "@/components/Icons";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { useClerk } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 let tabs = [
   { id: "all", label: "All Tasks" },
@@ -14,9 +13,13 @@ let tabs = [
   { id: "completed", label: "Completed Tasks" },
 ];
 
-const Navbar = ({ username }: { username: string }) => {
-  let [activeTab, setActiveTab] = useState(tabs[0].id);
+interface Props {
+  username: string;
+  activeTab: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+}
 
+const Navbar = ({ username, activeTab, setActiveTab }: Props) => {
   const { signOut } = useClerk();
   const router = useRouter();
 
@@ -50,7 +53,7 @@ const Navbar = ({ username }: { username: string }) => {
                 {activeTab === tab.id && (
                   <motion.span
                     layoutId="background"
-                    className="absolute w-[calc(100%_+_16px)] h-9 gap-1 rounded-lg z-10 bg-muted outline outline-1 outline-nav-secondary/10 outline-offset-2"
+                    className="absolute w-[calc(100%_+_16px)] h-9 gap-1 rounded-lg z-10 bg-muted"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}

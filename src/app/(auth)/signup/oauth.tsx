@@ -13,7 +13,7 @@ export default function Oauth() {
     signUp.authenticateWithRedirect({
       strategy,
       redirectUrl: "/signup/sso-callback",
-      redirectUrlComplete: "/",
+      redirectUrlComplete: "/tasks",
     });
   }
 
