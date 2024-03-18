@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
 import TaskItem from "./task-item";
@@ -54,15 +53,18 @@ const TasksList = ({
                 return (
                   <TaskItem
                     key={task.id}
+                    id={task.id}
+                    user={task.user}
                     title={task.title}
                     description={task.description ?? ""}
-                    date={format(task.date, "LLLL d, yyyy")}
+                    date={task.date}
                     done={task.done}
+                    tasks={tasks}
                   />
                 );
               })
             ) : (
-              <div className="flex items-center justify-center relative w-48 h-80 bottom-4">
+              <div className="flex items-center justify-center relative w-48 h-80 bottom-14">
                 <MdTask className="w-28 h-28" />
                 <div className="absolute left-0 top-0 w-full h-full ">
                   <FaStar className="absolute w-6 h-6 left-6 top-20 drop-shadow-glow" />

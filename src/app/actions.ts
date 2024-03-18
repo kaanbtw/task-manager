@@ -34,3 +34,15 @@ export async function getAllTasks() {
     .where(eq(tasks.user, user.username))
     .orderBy(tasks.date);
 }
+
+export async function toggleTaskDone(
+  taskId: number,
+  taskUser: string,
+  isDone: boolean
+) {
+  const user = await currentUser();
+
+  if (!user?.username || user?.username !== taskUser) return;
+
+  await db.update(tasks).set({ done: isDone }).where(eq(tasks.id, taskId));
+}
