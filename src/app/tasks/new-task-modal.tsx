@@ -43,7 +43,7 @@ const NewTaskModal = ({ buttonType }: { buttonType: string }) => {
   function onSubmit(values: z.infer<typeof taskSchema>) {
     createTask({ title: values.title, description: values.description })
       .then(() => {
-        toast.message("Task created.");
+        toast.success("Task created.");
       })
       .catch(() => {
         toast.error("Something went wrong, please try again later.");

@@ -7,11 +7,18 @@ import {
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
 } from "@nextui-org/react";
 
 import { useState } from "react";
-import { toggleTaskDone } from "../actions";
+import { toggleTaskDone, deleteTask } from "../actions";
 import { format } from "date-fns";
+import { toast } from "sonner";
 
 import { Icons } from "@/components/Icons";
 
@@ -36,6 +43,7 @@ const TaskItem = ({
 }: Props) => {
   const [isDone, setIsDone] = useState<boolean>(done);
   const [isLoaded, setIsLoaded] = useState(true);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   function findTaskById(tasks: Props[], id: number) {
     return tasks.find((task) => task.id === id);
@@ -46,6 +54,11 @@ const TaskItem = ({
     toggleTaskDone(id, user, isSelected);
     const taskToUpdate = tasks && findTaskById(tasks, id);
     if (taskToUpdate) taskToUpdate.done = isSelected;
+  }
+
+  async function handleDeleteTask() {
+    deleteTask(id, user);
+    toast.error("Task deleted.");
   }
 
   return (
@@ -95,7 +108,8 @@ const TaskItem = ({
                 <DropdownItem
                   key="delete"
                   color="danger"
-                  className="text-danger"
+                  className="text-red-600 hover:text-red-500 hover:border-red-500 hover:outline-500"
+                  onClick={onOpen}
                   startContent={<Icons.Trash />}
                 >
                   Delete Task
@@ -137,6 +151,48 @@ const TaskItem = ({
           ></Checkbox>
         </div>
       </div>
+
+      <Modal
+        backdrop={"blur"}
+        isOpen={isOpen}
+        onClose={onClose}
+        className="bg-secondary flex flex-col items-center text-center"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-4 font-medium">
+                {/* <Icons.Trash /> */}
+                Delete Task
+              </ModalHeader>
+              <ModalBody>
+                <p className="font-light text-muted-foreground">
+                  Are you sure you want to delete this task? This action cannot
+                  be undone.
+                </p>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  className="text-muted-foreground hover:text-white hover:bg-nav-background"
+                  color="primary"
+                  variant="light"
+                  onPress={onClose}
+                >
+                  Close
+                </Button>
+                <Button
+                  color="default"
+                  className="text-white bg-red-800 hover:bg-red-500 rounded-[10px]"
+                  onClick={handleDeleteTask}
+                  onPress={onClose}
+                >
+                  Delete
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 };

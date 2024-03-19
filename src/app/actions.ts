@@ -23,6 +23,16 @@ export async function createTask(values: z.infer<typeof taskSchema>) {
   return result;
 }
 
+export async function deleteTask(taskId: number, taskUser: string) {
+  const user = await currentUser();
+
+  if (!user?.username || user?.username !== taskUser) return;
+
+  await db.delete(tasks).where(eq(tasks.id, taskId));
+
+  revalidatePath("/tasks");
+}
+
 export async function getAllTasks() {
   const user = await currentUser();
 
