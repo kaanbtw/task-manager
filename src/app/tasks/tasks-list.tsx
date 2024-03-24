@@ -36,8 +36,18 @@ const TasksList = ({
       : task;
   });
 
+  function capitalizeFirstLetter(text: string) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
   return (
     <>
+      <div className="relative flex justify-between items-center min-[800px]:w-[746px] min-[1400px]:w-[1130px] min-[1800px]:w-[1514px] h-[11%]">
+        <h1 className="text-3xl">
+          {capitalizeFirstLetter(activeTab) + " Tasks"}
+        </h1>
+        <NewTaskModal buttonType="small" />
+      </div>
       <section className="flex justify-center relative w-full h-full min-[800px]:h-[78%] overflow-x-hidden">
         <div className="flex w-fit p-1 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border justify-center">
           <div

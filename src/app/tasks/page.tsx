@@ -21,11 +21,6 @@ export default async function Tasks() {
     <main className="dark flex flex-col relative bg-background h-full w-full items-center justify-center overflow-hidden">
       <Toaster position="top-center" richColors />
 
-      <div className="relative flex justify-between items-center min-[800px]:w-[746px] min-[1400px]:w-[1130px] min-[1800px]:w-[1514px] h-[11%]">
-        <h1 className="text-3xl">All Tasks</h1>
-        <NewTaskModal buttonType="small" />
-      </div>
-
       <TasksList tasks={tasks} username={user.username} />
 
       <Image
